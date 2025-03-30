@@ -10,7 +10,7 @@ export default function Hero() {
             <span className="HeroTitleMd">Come to here for your life</span>
             <span className="HeroTitleSm">Create your own <a>Blog</a> from here</span>
             <Link to="/write"><div className="button">
-                <a>Create your Blog</a>
+            <span>Create your Blog</span>
             </div></Link>
         </div>
         <img className="HeroImg" src={hero}/>

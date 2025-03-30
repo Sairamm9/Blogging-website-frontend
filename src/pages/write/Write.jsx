@@ -11,9 +11,10 @@ export default function Write() {
     const { user } = useContext(Context); 
 
     if (!user || !user.username) {
-        console.error("User context is missing!");
-        return null;
+        console.error("User context is missing!", user);
+        return <p style={{ color: "red" }}>You must be logged in to publish a post.</p>;
     }
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,6 +23,8 @@ export default function Write() {
             title,
             desc,
         };
+
+        console.log("New post object:", newPost);
 
         if (file) {
             const data = new FormData();
