@@ -1,0 +1,108 @@
+.HeroTitile{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lora', serif;
+    color: #444;
+    padding-left: 160px;
+}
+.HeroTitleLg{
+    position: absolute;
+    top: 35%;
+    font-size: 70px;
+    color: rgb(225, 5, 141);
+}
+.HeroTitleMd{
+    position: absolute;
+    top: 48%;
+    font-size: 45px;
+}
+.HeroTitleSm{
+    position: absolute;
+    top: 58%;
+    font-size: 25px;
+}
+.HeroTitleSm a{
+    color: rgb(225, 5, 141);
+}
+.HeroImg{
+    width: 100%;
+}
+.button{
+    position: absolute;
+    cursor: pointer;
+    top: 66%;
+    border: 2px solid black;
+    height: 40px;
+    width: 160px;
+    border-radius: 50px;
+    background-color: rgb(225, 5, 141);
+    font-weight: bold;
+    color: black;
+}
+.button:hover{
+    background-color: rgb(164, 7, 106);
+}
+.button a{
+    text-align: center;
+    margin-top: 8px;
+    display: block;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 992px) {
+    .HeroTitile{
+        padding-left: 20px;
+    }
+    .HeroTitleLg{
+        top: 20%;
+        font-size: 50px;
+    }
+    .HeroTitleMd{
+        top: 30%;
+        font-size: 30px;
+    }
+    .HeroTitleSm{
+        top: 37%;
+        font-size: 20px;
+    }
+    .button{
+        top: 44%;
+        height: 37px;
+        width: 140px;
+    }
+  }
+  
+  /* For medium devices */
+  @media screen and (max-width: 768px) {
+    
+  }
+  
+  @media screen and (max-width: 576px) {
+    .HeroTitile{
+        padding-left: 20px;
+    }
+    .HeroTitleLg{
+        top: 18%;
+        font-size: 40px;
+    }
+    .HeroTitleMd{
+        top: 26%;
+        font-size: 23px;
+    }
+    .HeroTitleSm{
+        top: 32%;
+        font-size: 15px;
+    }
+    .button{
+        top: 38%;
+        height: 40px;
+        width: 160px;
+    }
+  }
+  
+  /* For small devices */
+  @media screen and (max-width: 350px) {
+    
+  }
+    

@@ -1,0 +1,72 @@
+.login{
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5)
+        rgba(255, 255, 255, 0.5)
+    );
+    background-size: cover;
+} 
+.loginTitle{
+    font-size: 50px;
+}
+.loginForm{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.loginForm label{
+    margin: 10px 0;
+    font-size: 20px;
+}
+.loginForm input{
+    border-bottom: 1px solid black;
+    font-size: 15px;
+}
+.loginForm input:hover{
+    border-bottom-color: rgb(225, 5, 141);
+}
+.loginInput{
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.loginButton{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgb(225, 5, 141);
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    width: 240px;
+}
+.loginButton:disabled{
+    cursor: not-allowed;
+    background-color: teal;
+}
+.loginButton:hover{
+    background-color: teal;
+}
+.loginRegister{
+    position: absolute;
+    top: 120px;
+    right: 70px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: teal;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    width: 100px;
+}
+.loginRegister:hover{
+    background-color: rgb(225, 5, 141);
+}
