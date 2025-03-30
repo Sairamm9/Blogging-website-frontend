@@ -6,7 +6,7 @@ const about = () => {
   return (
     <div>
         <About />
-        <Footer />
+        {/* <Footer /> */}
     </div>
   )
 }
