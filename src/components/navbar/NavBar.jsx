@@ -1,90 +1,78 @@
 import "./navbar.css";
 import { logo } from "../../assets/index";
-// import { IoSearchOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../context/Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GrClose } from "react-icons/gr";
 import { FiAlignJustify } from "react-icons/fi";
-import {useState} from "react";
-
 
 export default function NavBar() {
-  const {user, dispatch} = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const { user, dispatch } = useContext(Context);
+  const PF = "http://localhost:5000/images/";
+  const history = useHistory(); // ✅ Get history object
 
   const handleLogout = () => {
-    dispatch({type: "LOGOUT"});
-  }
+    dispatch({ type: "LOGOUT" });
+    history.push("/login"); // ✅ Redirect to login after logout
+  };
 
-
-  /*=============== Toggle Menu ===============*/
-  const[isMobile, setIsMobile] = useState(false);
-
+  const [isMobile, setIsMobile] = useState(false);
 
   return (
+    <nav className="navbar">
+      <Link to="/">
+        <img className="logo" src={logo} alt="logo" />
+      </Link>
 
-    <nav className='navbar'>
-      <Link to="/"><img className="logo" src={logo} alt="logo" /></Link>
-
-      <ul className={isMobile ? "nav-links-mobile" : "nav-link"}
-         onClick={() => setIsMobile(false)}
+      <ul
+        className={isMobile ? "nav-links-mobile" : "nav-link"}
+        onClick={() => setIsMobile(false)}
       >
-        <Link to="/" className="nav_home"><li>Home</li></Link>
-        <Link to="/about" className="nav_about"><li>About</li></Link>
-        <Link to="/contact" className="nav_contact"><li>Contact</li></Link>
-        <Link to="/write" className="nav_write"><li>Write</li></Link>
+        <Link to="/" className="nav_home">
+          <li>Home</li>
+        </Link>
+        <Link to="/about" className="nav_about">
+          <li>About</li>
+        </Link>
+        <Link to="/contact" className="nav_contact">
+          <li>Contact</li>
+        </Link>
+        <Link to="/write" className="nav_write">
+          <li>Write</li>
+        </Link>
 
-        <Link><li className="nav_logout" onClick={handleLogout}>{user && "Logout"}</li></Link>
+        {/* ✅ Fix Logout Button */}
+        {user && (
+          <li className="nav_logout" onClick={handleLogout}>
+            Logout
+          </li>
+        )}
       </ul>
 
       <div>
         {user ? (
           <Link to="/settings">
-            <img 
-              className="dp" 
-              src={PF + user.profilePic} 
-              alt=" "
-            />
+            <img className="dp" src={PF + user.profilePic} alt=" " />
           </Link>
-          ) : (
+        ) : (
           <ul className="loginBar">
-            <li><Link className="link" id="loginBar" to="/login">Login</Link></li>
-            <li><Link className="link" id="loginBar" to="/register">Register</Link></li>
+            <li>
+              <Link className="link" id="loginBar" to="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link className="link" id="loginBar" to="/register">
+                Register
+              </Link>
+            </li>
           </ul>
-          )
-        }
+        )}
       </div>
-      
 
-      <div className='mobile-menu-icon'
-         onClick={() => setIsMobile(!isMobile)}
-      >
-         {isMobile ? (
-            <i className='icon'><GrClose /></i>
-         ) : (
-            <i className="icon"><FiAlignJustify /></i>
-         )}
+      <div className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
+        {isMobile ? <GrClose className="icon" /> : <FiAlignJustify className="icon" />}
       </div>
     </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  )
+  );
 }

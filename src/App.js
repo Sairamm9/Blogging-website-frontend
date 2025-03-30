@@ -1,44 +1,38 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context";
+
 import NavBar from "./components/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
-import LOgin from "./pages/login/LOgin";
+import Login from "./pages/login/LOgin";
 import Register from "./pages/register/Register";
 import Footer from "./components/Footer/Footer";
 import Contact from "./pages/contact/contact";
 import About from "./pages/about/about";
 
-import { 
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link  
-} from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "./context/Context";
-
-
-// import SinglePost from "./components/singlePost/SinglePost";
-
-
-
 function App() {
-  const {user} = useContext(Context);
+  const { user } = useContext(Context);
+
   return (
     <Router>
-      < NavBar />
-      <Switch >
-        <Route exact path="/"><Home /></Route>
-        <Route exact path="/register">{user ? <Home/> : <Register /> } </Route>
-        <Route exact path="/login"> {user ? <Home/> : <LOgin /> } </Route>
-        <Route exact path="/write"> {user ? <Write/> : <Register/> } </Route>
-        <Route exact path="/settings"> {user ? <Settings/> : <Register/> } </Route>
-        <Route exact path="/post/:postId"><Single /></Route>
-        <Route exact path="/about"><About /></Route>
-        <Route exact path="/contact"><Contact /></Route>
-        <Route><Footer /></Route>
+      <NavBar />
+
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={user ? Home : Register} />
+        <Route exact path="/login" component={user ? Home : Login} />
+        <Route exact path="/write" component={user ? Write : Register} />
+        <Route exact path="/settings" component={user ? Settings : Register} />
+        <Route exact path="/post/:postId" component={Single} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
       </Switch>
+
+      {/* Footer should be outside Switch */}
+      <Footer />
     </Router>
   );
 }
